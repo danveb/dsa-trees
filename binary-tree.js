@@ -34,7 +34,7 @@ class BinaryTree {
     while(queue.length) {
       // increase depth 
       minDepth += 1
-      // keep track of each level of the queue
+      // keep track of each level of the tree
       let level = queue.length 
 
       // loop each level 
@@ -56,8 +56,31 @@ class BinaryTree {
   /** maxDepth(): return the maximum depth of the tree -- that is,
    * the length of the longest path from the root to a leaf. */
 
+  // use STACK for DFS
   maxDepth() {
-  
+    // initialize maxDepth at 0
+    // initialize stack and push root to the stack
+    let maxDepth = 0
+    let stack = []
+    stack.push(this.root) 
+
+    // check if there's no root node; if so return 0
+    if(this.root === null) return 0 
+
+    // while the stack is not empty 
+    while(stack.length) {
+      // increase depth 
+      maxDepth += 1 
+      // keep track of each level of the tree
+      let level = stack.length 
+
+      for(let i = 0; i < level; i++) {
+        let current = stack.pop() 
+        if(current.left) stack.push(current.left)
+        if(current.right) stack.push(current.right)
+      }
+    }
+    return maxDepth;   
   }
 
   /** maxSum(): return the maximum sum you can obtain by traveling along a path in the tree.
