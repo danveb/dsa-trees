@@ -3,6 +3,7 @@
 class BinaryTreeNode {
   constructor(val, left = null, right = null) {
     this.val = val;
+    // childs are left and right 
     this.left = left;
     this.right = right;
   }
@@ -15,16 +16,48 @@ class BinaryTree {
 
   /** minDepth(): return the minimum depth of the tree -- that is,
    * the length of the shortest path from the root to a leaf. */
+  /* Traverse the binary tree */ 
 
+  // alternative solution using a QUEUE for BFS 
   minDepth() {
 
+    // initialize minDepth at 0
+    // initialize empty queue and push the root 
+    let minDepth = 0
+    let queue = [] 
+    queue.push(this.root) 
+
+    // check if the root is null; if so return 0
+    if(this.root === null) return 0 
+
+    // while the queue has elements inside
+    while(queue.length) {
+      // increase depth 
+      minDepth += 1
+      // keep track of each level of the queue
+      let level = queue.length 
+
+      // loop each level 
+      for(let i = 0; i < level; i++) {
+        // remove item from the start 
+        let current = queue.shift() 
+        if(!current.left && !current.right) {
+          return minDepth
+        }
+
+        if(current.left) queue.push(current.left) 
+        if(current.right) queue.push(current.right) 
+        
+      }
+    }
+    return minDepth; 
   }
 
   /** maxDepth(): return the maximum depth of the tree -- that is,
    * the length of the longest path from the root to a leaf. */
 
   maxDepth() {
-
+  
   }
 
   /** maxSum(): return the maximum sum you can obtain by traveling along a path in the tree.
