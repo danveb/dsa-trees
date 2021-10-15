@@ -84,18 +84,63 @@ class BinaryTree {
   }
 
   /** maxSum(): return the maximum sum you can obtain by traveling along a path in the tree.
-   * The path doesn't need to start at the root, but you can't visit a node more than once. */
+   * The path doesn't need to start at the root, but you can't visit a node more than once. 
 
-  maxSum() {
+   let node100 = new BinaryTreeNode(100);
+   let node8 = new BinaryTreeNode(8);
+   let nodeNeg4 = new BinaryTreeNode(-4);
+   let node2 = new BinaryTreeNode(2, nodeNeg4);
+   let nodeNeg3 = new BinaryTreeNode(-3, node8, node100);
+   let root = new BinaryTreeNode(10, node2, nodeNeg3);
+   let tree = new BinaryTree(root);
 
-  }
+        10
+      /   \
+     2    -3
+    /     / \
+  -4     8   100
+
+  */ 
+
+  // maxSum() {
+  //   // initialize max as 0
+  //   let max = 0 
+  //   // helper function 
+  //   const maxSumFn = (node) => {
+  //     if(node === null) return 0 
+
+  //     const left = maxSumFn(node.left) 
+  //     const right = maxSumFn(node.right) 
+  //     max = Math.max(max, node.val + left + right) 
+      
+  //     return Math.max(0, left + node.val, right + node.val) 
+  //   }
+
+  //   maxSumFn(this.root) 
+  //   return max; 
+  // }
 
   /** nextLarger(lowerBound): return the smallest value in the tree
    * which is larger than lowerBound. Return null if no such value exists. */
 
-  nextLarger(lowerBound) {
+  // nextLarger(lowerBound) {
+  //   let result = null 
+  //   // helper function 
+  //   const nextLargerFn = (lowerBound, node) => {
+  //     if(node === null) return 
 
-  }
+  //     if(node.val > lowerBound) {
+  //       if(result === null || result > node.val) {
+  //         result = node.val 
+  //       }
+  //     }
+
+  //     nextLargerFn(lowerBound, node.left)
+  //     nextLargerFn(lowerBound, node.right)
+  //   }
+  //   nextLargerFn(lowerBound, this.root) 
+  //   return result 
+  // }
 
   /** Further study!
    * areCousins(node1, node2): determine whether two nodes are cousins
